@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>UnsplashAPI</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <carina-core_version>8.0.4</carina-core_version>
+        <carina-aws-s3.version>1.0.0</carina-aws-s3.version>
+        <java.version>11</java.version>
+        <zebrunner-agent.version>1.9.2</zebrunner-agent.version>
+        <log4j-api.version>2.17.1</log4j-api.version>
+        <log4j-core.version>2.17.1</log4j-core.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
+        <jackson-datatype.version>2.9.7</jackson-datatype.version>
+        <lombok.version>1.18.24</lombok.version>
+    </properties>
+
+    <dependencies>
+    <dependency>
+        <groupId>com.qaprosoft</groupId>
+        <artifactId>carina-core</artifactId>
+        <version>${carina-core_version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.zebrunner</groupId>
+        <artifactId>carina-aws-s3</artifactId>
+        <version>${carina-aws-s3.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j-api.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.17.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${assertj-core.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>${jackson-datatype.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    </dependencies>
+</project>
