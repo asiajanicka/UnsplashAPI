@@ -1,7 +1,9 @@
 package org.example.dataProviders;
 
 import org.example.endpoints.search.SearchCollectionsMethod;
+import org.example.endpoints.search.SearchPhotosMethod;
 import org.example.model.SearchCollectionDto;
+import org.example.model.SearchPhotoDto;
 import org.testng.annotations.DataProvider;
 
 import java.util.List;
@@ -61,6 +63,31 @@ public class DataProviders {
 
     @DataProvider(name = "invalid-values-for-photo-orientation")
     public static Object[][] invalidValuesForPhotoOrientation() {
+        return new Object[][]{{"-1"}, {"invalid"}, {" "}, {"1.5"}, {""}};
+    }
+
+    @DataProvider(name = "valid-query-for-photo-search")
+    public static Object[][] validQueryProvider() {
+        return new Object[][]{
+                {" "}, {"a"}, {"cat"}, {"giewont"}, {"cute kitty"}, {"cat hamster"}, {"cat and hamster"}};
+    }
+
+    @DataProvider(name = "search-photos-query-about-dog")
+    public static Object[][] queryForPhotosWithDog() {
+        SearchPhotosMethod request = new SearchPhotosMethod("dog");
+        String body = request.callAPI().body().asString();
+        return new Object[][]{{body}};
+    }
+
+    @DataProvider(name = "query-with-total-number-of-pages")
+    public static Object[][] queryWithPagesAmount() {
+        SearchPhotosMethod request = new SearchPhotosMethod("pies");
+        SearchPhotoDto searchPhotoDto = request.callAPI().as(SearchPhotoDto.class);
+        return new Object[][]{{"pies", searchPhotoDto.getTotalPages()}};
+    }
+
+    @DataProvider(name = "invalid-values-for-optional-params")
+    public static Object[][] invalidValuesForOptParams() {
         return new Object[][]{{"-1"}, {"invalid"}, {" "}, {"1.5"}, {""}};
     }
 }
