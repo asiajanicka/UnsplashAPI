@@ -1,7 +1,8 @@
-package org.example.dataProviders;
+package org.example.withAuth.dataProviders;
 
-import org.example.endpoints.search.SearchCollectionsMethod;
-import org.example.endpoints.search.SearchPhotosMethod;
+import org.example.endpoints.withAuth.search.SearchCollectionsMethod;
+import org.example.endpoints.withAuth.search.SearchPhotosMethod;
+import org.example.model.CollectionDto;
 import org.example.model.SearchCollectionDto;
 import org.example.model.SearchPhotoDto;
 import org.testng.annotations.DataProvider;
@@ -9,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.example.Utils.CommonNames.baseSearchQuery;
+import static org.example.utils.CommonNames.baseSearchQuery;
 import static org.example.utils.AppProperties.getDefaultResultsPerPageNum;
 
 public class DataProviders {
@@ -17,11 +18,11 @@ public class DataProviders {
     @DataProvider(name = "collectionsIds")
     public static Object[][] collectionsIds() {
         SearchCollectionsMethod request = new SearchCollectionsMethod(baseSearchQuery);
-        List<String > collectionsIdsList = request.callAPI()
+        List<String> collectionsIdsList = request.callAPI()
                 .as(SearchCollectionDto.class)
                 .getCollections()
                 .stream()
-                .map(p->p.getId())
+                .map(CollectionDto::getId)
                 .collect(Collectors.toList());
         return new Object[][]{{collectionsIdsList}};
     }
@@ -33,7 +34,7 @@ public class DataProviders {
 
     @DataProvider(name = "empty-values")
     public static Object[][] getEmptyValues() {
-        return new Object[][]{{""},{" "} };
+        return new Object[][]{{""}, {" "}};
     }
 
     @DataProvider(name = "invalid-values-for-page-in-read-photos-in-collection")

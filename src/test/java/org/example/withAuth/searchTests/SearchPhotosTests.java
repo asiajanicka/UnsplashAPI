@@ -1,11 +1,11 @@
-package org.example.searchTests;
+package org.example.withAuth.searchTests;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
-import org.example.dataProviders.DataProviders;
-import org.example.endpoints.search.SearchPhotosMethod;
+import org.example.withAuth.dataProviders.DataProviders;
+import org.example.endpoints.withAuth.search.SearchPhotosMethod;
 import org.example.model.ErrorDto;
 import org.example.model.PhotoDto;
 import org.example.model.SearchPhotoDto;
@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.Utils.CommonNames.baseSearchQuery;
-import static org.example.Utils.TestUtils.*;
+import static org.example.utils.CommonNames.baseSearchQuery;
+import static org.example.utils.TestUtils.*;
 import static org.example.utils.AppProperties.*;
 
 public class SearchPhotosTests implements IAbstractTest {

@@ -1,21 +1,21 @@
-package org.example.endpoints.collections;
+package org.example.endpoints.withAuth.collections;
 
 import com.qaprosoft.carina.core.foundation.api.annotation.Endpoint;
 import com.qaprosoft.carina.core.foundation.api.annotation.SuccessfulHttpStatus;
 import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
-import org.example.endpoints.base.BaseMethod;
+import org.example.endpoints.withAuth.base.BaseMethod;
 
-@Endpoint(url = "${config.base_url}/collections/${id}", methodType = HttpMethodType.GET)
+@Endpoint(url = "${config.base_url}/collections/${id}/photos", methodType = HttpMethodType.GET)
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class ReadCollectionMethod extends BaseMethod {
+public class ReadPhotosInCollectionMethod extends BaseMethod {
 
-    public ReadCollectionMethod() {
+    public ReadPhotosInCollectionMethod() {
         super();
     }
 
-    public ReadCollectionMethod(String id) {
-        this();
+    public ReadPhotosInCollectionMethod(String id) {
+        super();
         replaceUrlPlaceholder("id", id);
     }
 }

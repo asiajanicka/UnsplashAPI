@@ -1,4 +1,4 @@
-package org.example.endpoints.base;
+package org.example.endpoints.withAuth.base;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
 

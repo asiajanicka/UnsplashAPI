@@ -1,21 +1,21 @@
-package org.example.endpoints.search;
+package org.example.endpoints.withAuth.collections;
 
 import com.qaprosoft.carina.core.foundation.api.annotation.Endpoint;
 import com.qaprosoft.carina.core.foundation.api.annotation.SuccessfulHttpStatus;
 import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
-import org.example.endpoints.base.BaseMethod;
+import org.example.endpoints.withAuth.base.BaseMethod;
 
-@Endpoint(url = "${config.base_url}/search/photos", methodType = HttpMethodType.GET)
+@Endpoint(url = "${config.base_url}/collections/${id}", methodType = HttpMethodType.GET)
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class SearchPhotosMethod extends BaseMethod {
+public class ReadCollectionMethod extends BaseMethod {
 
-    public SearchPhotosMethod() {
+    public ReadCollectionMethod() {
         super();
     }
 
-    public SearchPhotosMethod(String query) {
+    public ReadCollectionMethod(String id) {
         this();
-        addUrlParameter("query", query);
+        replaceUrlPlaceholder("id", id);
     }
 }

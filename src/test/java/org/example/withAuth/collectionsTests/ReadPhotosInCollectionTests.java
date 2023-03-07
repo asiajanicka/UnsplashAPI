@@ -1,13 +1,13 @@
-package org.example.collectionsTests;
+package org.example.withAuth.collectionsTests;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
-import org.example.dataProviders.DataProviders;
-import org.example.endpoints.collections.ReadPhotosInCollectionMethod;
-import org.example.endpoints.search.SearchCollectionsMethod;
+import org.example.withAuth.dataProviders.DataProviders;
+import org.example.endpoints.withAuth.collections.ReadPhotosInCollectionMethod;
+import org.example.endpoints.withAuth.search.SearchCollectionsMethod;
 import org.example.model.ErrorDto;
 import org.example.model.PhotoDto;
 import org.example.model.SearchCollectionDto;
@@ -17,8 +17,8 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.Utils.CommonNames.baseSearchQuery;
-import static org.example.Utils.TestUtils.*;
+import static org.example.utils.CommonNames.baseSearchQuery;
+import static org.example.utils.TestUtils.*;
 import static org.example.utils.AppProperties.getDefaultResultsPerPageNum;
 import static org.example.utils.AppProperties.getLimitForResultsPerPageNum;
 
