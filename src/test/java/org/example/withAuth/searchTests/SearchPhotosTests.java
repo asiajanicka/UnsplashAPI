@@ -29,15 +29,15 @@ public class SearchPhotosTests implements IAbstractTest {
 
         Response response = request.callAPIExpectSuccess();
 
-        assertDefaultResponse(response, baseSearchQuery);
+        assertDefaultResponse(response, query);
     }
 
     private void assertDefaultResponse(Response response, String query) {
         SearchPhotoDto searchPhotoDto = response.as(SearchPhotoDto.class);
         String linkHeader = response.getHeader("Link");
 
-        String expectedLastPageString = String.format("page=%d&query=%s", searchPhotoDto.getTotalPages(), query);
-        String expectedNextPageString = String.format("page=2&query=%s", query);
+        String expectedLastPageString = String.format("page=%d&query=%s", searchPhotoDto.getTotalPages(), query.replaceAll(" ","+"));
+        String expectedNextPageString = String.format("page=2&query=%s", query.replaceAll(" ","+"));
 
         SoftAssertions soft = new SoftAssertions();
         soft.assertThat(searchPhotoDto.getTotal()).isGreaterThan(getDefaultResultsPerPageNum());
@@ -112,9 +112,9 @@ public class SearchPhotosTests implements IAbstractTest {
         assertThat(responseBodyAsString).isNotEqualTo(dogResponseBodyAsSting);
     }
 
-    @Test
-    public void emptyQueryTest() {
-        SearchPhotosMethod request = new SearchPhotosMethod("");
+    @Test(dataProvider = "empty-values", dataProviderClass = DataProviders.class)
+    public void emptyQueryTest(String emptyQuery) {
+        SearchPhotosMethod request = new SearchPhotosMethod(emptyQuery);
 
         Response response = request.callAPIExpectSuccess();
 
@@ -211,7 +211,7 @@ public class SearchPhotosTests implements IAbstractTest {
         SearchPhotosMethod requestForThirdPage = new SearchPhotosMethod(baseSearchQuery);
         requestForThirdPage.addUrlParameter("page", "3");
 
-        String responseBodyAsStringForThirdPage = requestForSecond.callAPIExpectSuccess().getBody().asString();
+        String responseBodyAsStringForThirdPage = requestForThirdPage.callAPIExpectSuccess().getBody().asString();
 
         assertThat(responseBodyAsStringForSecondPage).isNotEqualTo(responseBodyAsStringForThirdPage);
     }

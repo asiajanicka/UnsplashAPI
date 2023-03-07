@@ -59,7 +59,7 @@ public class DataProviders {
 
     @DataProvider(name = "invalid-values-for-number-of-items-per-page")
     public static Object[][] invalidValuesForNumberOfItemsPerPage() {
-        return new Object[][]{{"-1"}, {"invalid"}, {" "}, {"1.5"}, {""}};
+        return new Object[][]{{"invalid"}, {" "}, {"1.5"}};
     }
 
     @DataProvider(name = "invalid-values-for-photo-orientation")
@@ -70,7 +70,7 @@ public class DataProviders {
     @DataProvider(name = "valid-query-for-photo-search")
     public static Object[][] validQueryProvider() {
         return new Object[][]{
-                {" "}, {"a"}, {"cat"}, {"giewont"}, {"cute kitty"}, {"cat hamster"}, {"cat and hamster"}};
+                {"a"}, {"cat"}, {"giewont"}, {"cute kitty"}, {"cat hamster"}, {"cat and hamster"}};
     }
 
     @DataProvider(name = "search-photos-query-about-dog")

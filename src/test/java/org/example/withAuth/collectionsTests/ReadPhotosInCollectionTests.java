@@ -268,6 +268,16 @@ public class ReadPhotosInCollectionTests implements IAbstractTest {
         soft.assertAll();
     }
 
+    @Test
+    public void getDefaultResultIfNumberOfItemsPerPageIsEmptyTest(){
+        ReadPhotosInCollectionMethod request = new ReadPhotosInCollectionMethod(validCollectionId);
+        request.addUrlParameter("per_page", "");
+
+        Response response = request.callAPIExpectSuccess();
+
+        assertDefaultResponse(response);
+    }
+
     @Test(dataProvider = "invalid-integer-values", dataProviderClass = DataProviders.class)
     public void getLimitResultsIfNumberOfItemsPerPageSetToInvalidIntegerTest(int invalidInteger){
         ReadPhotosInCollectionMethod request = new ReadPhotosInCollectionMethod(validCollectionId);
@@ -280,14 +290,15 @@ public class ReadPhotosInCollectionTests implements IAbstractTest {
     }
 
     @Test(dataProvider = "invalid-values-for-number-of-items-per-page", dataProviderClass = DataProviders.class)
-    public void getLimitResultsIfNumberOfItemsPerPageSetToInvalidValueTest(String invalidNumber){
+    public void errorIfNumberOfItemsPerPageSetToInvalidValueTest(String invalidNumber){
+        String expectedErrorMsg = "per_page is invalid";
+
         ReadPhotosInCollectionMethod request = new ReadPhotosInCollectionMethod(validCollectionId);
         request.addUrlParameter("per_page", invalidNumber);
 
-        List<PhotoDto> photoDtos =request.callAPIExpectSuccess().as(new TypeRef<>() {
-        });
+        ErrorDto errorDto = request.callAPI().as(ErrorDto.class);
 
-        assertThat(photoDtos.size()).isEqualTo(getLimitForResultsPerPageNum());
+        assertThat(errorDto.getMessages()).contains(expectedErrorMsg);
     }
 
     @Test
