@@ -1,7 +1,7 @@
-package org.example.withAuth.dataProviders;
+package org.example.tests.dataProviders;
 
-import org.example.endpoints.withAuth.search.SearchCollectionsMethod;
-import org.example.endpoints.withAuth.search.SearchPhotosMethod;
+import org.example.endpoints.search.SearchCollectionsMethod;
+import org.example.endpoints.search.SearchPhotosMethod;
 import org.example.model.CollectionDto;
 import org.example.model.SearchCollectionDto;
 import org.example.model.SearchPhotoDto;

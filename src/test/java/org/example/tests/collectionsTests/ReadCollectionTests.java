@@ -1,14 +1,14 @@
-package org.example.withAuth.collectionsTests;
+package org.example.tests.collectionsTests;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.example.endpoints.withAuth.collections.ReadCollectionMethod;
+import org.example.endpoints.collections.ReadCollectionMethod;
 import org.example.model.CollectionDto;
 import org.example.model.ErrorDto;
-import org.example.withAuth.dataProviders.DataProviders;
+import org.example.tests.dataProviders.DataProviders;
 import org.testng.annotations.Test;
 
 import java.util.List;

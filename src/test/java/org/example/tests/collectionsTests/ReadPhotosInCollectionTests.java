@@ -1,13 +1,13 @@
-package org.example.withAuth.collectionsTests;
+package org.example.tests.collectionsTests;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
-import org.example.withAuth.dataProviders.DataProviders;
-import org.example.endpoints.withAuth.collections.ReadPhotosInCollectionMethod;
-import org.example.endpoints.withAuth.search.SearchCollectionsMethod;
+import org.example.tests.dataProviders.DataProviders;
+import org.example.endpoints.collections.ReadPhotosInCollectionMethod;
+import org.example.endpoints.search.SearchCollectionsMethod;
 import org.example.model.ErrorDto;
 import org.example.model.PhotoDto;
 import org.example.model.SearchCollectionDto;
